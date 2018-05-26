@@ -1,14 +1,14 @@
 package com.CRM.CRMV1.controller;
 
-import com.CRM.CRMV1.UserInfoRepository;
+import com.CRM.CRMV1.model.UserRoles;
+import com.CRM.CRMV1.repository.UserInfoRepository;
 import com.CRM.CRMV1.model.Users;
-import org.apache.catalina.User;
+import com.CRM.CRMV1.repository.UserRolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -20,6 +20,8 @@ public class UserInfoController {
     private UserInfoRepository userInfoRepository;
 
 
+    @Autowired
+    UserRolesRepository userRolesRepository;
 
     @RequestMapping(value="/foo")
     public String accountGet(@RequestParam("uname") String username)
@@ -35,6 +37,23 @@ public class UserInfoController {
 
     }
 
+    @GetMapping (path="/user/{username}")
+    public @ResponseBody Users getUserByUserName(@PathVariable String username){
+
+        Users u =userInfoRepository.findUsersByUsername(username);
+        return u;
+
+    }
+
+
+    @GetMapping (path="/user/role/{id}")
+    public @ResponseBody
+    Optional<UserRoles> getUserRoleByUserName(@PathVariable Integer id){
+
+        Optional<UserRoles> u = userRolesRepository.findById(id);
+        return u;
+
+    }
 
 
 }

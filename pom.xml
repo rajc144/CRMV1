@@ -89,6 +89,18 @@
 		</dependency>
 
 
+
+		<!-- spring boot security -->
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<version>5.1.0.M1</version>
+		</dependency>
+
+
+
+
 	</dependencies>
 
 
