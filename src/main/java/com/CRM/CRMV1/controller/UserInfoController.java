@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value="/get")
+@RequestMapping(value="/user")
 public class UserInfoController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class UserInfoController {
 
     }
 
-    @GetMapping (path="/user/{username}")
+    @GetMapping (path="/{username}")
     public @ResponseBody Users getUserByUserName(@PathVariable String username){
 
         Users u =userInfoRepository.findUsersByUsername(username);
@@ -46,7 +46,7 @@ public class UserInfoController {
     }
 
 
-    @GetMapping (path="/user/role/{id}")
+    @GetMapping (path="/role/{id}")
     public @ResponseBody
     Optional<UserRoles> getUserRoleByUserName(@PathVariable Integer id){
 
