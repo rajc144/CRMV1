@@ -80,15 +80,20 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.21</version>
-			<scope>system</scope>
-			<systemPath>/Users/rajc/Downloads/CRMV1/src/main/resources/lombok-edge.jar</systemPath>
-		</dependency>
+		<!--	<dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.21</version>
+                <scope>system</scope>
+                <systemPath>/Users/rajc/Downloads/CRMV1/src/main/resources/lombok-edge.jar</systemPath>
+            </dependency>
 
-		<!-- https://mvnrepository.com/artifact/br.com.ingenieux/beanstalk-maven-plugin -->
+
+            -->
+
+
+
+            <!-- https://mvnrepository.com/artifact/br.com.ingenieux/beanstalk-maven-plugin -->
 		<dependency>
 			<groupId>br.com.ingenieux</groupId>
 			<artifactId>beanstalk-maven-plugin</artifactId>
