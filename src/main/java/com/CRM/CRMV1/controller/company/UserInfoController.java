@@ -1,4 +1,4 @@
-package com.CRM.CRMV1.controller;
+package com.CRM.CRMV1.controller.company;
 
 import com.CRM.CRMV1.model.UserRoles;
 import com.CRM.CRMV1.repository.UserInfoRepository;

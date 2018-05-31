@@ -1,4 +1,4 @@
-package com.CRM.CRMV1.controller;
+package com.CRM.CRMV1.controller.company;
 
 
 import com.CRM.CRMV1.model.FinancialSummary;
@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping(value="/financials")
+@RequestMapping(value="/company")
 public class CompanyFinancialSummaryController {
 
 
 
-    @GetMapping(value="/{companyid}")
+    @GetMapping(value="/financials/{companyid}")
     public @ResponseBody FinancialSummary getFinancialSummaryByCompanyId(@PathVariable Integer companyid )
     {
         FinancialSummary fs = new FinancialSummary();
