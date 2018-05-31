@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy =GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer profile_id;
 
     private Integer role_id;
@@ -34,7 +34,9 @@ public class Users {
 
     private String password;
 
-    private Integer usertypes_id;
+    private String usertype;
+
+    private String business_name;
 
 
 }

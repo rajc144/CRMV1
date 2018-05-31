@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class FollowUps {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer followups_id;
 
     private Integer followups_status_code_id;

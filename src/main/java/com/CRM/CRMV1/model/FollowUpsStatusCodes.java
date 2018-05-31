@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class FollowUpsStatusCodes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer followups_status_code_id;
 
     private String followups_status_code_name;

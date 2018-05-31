@@ -11,10 +11,12 @@ import java.sql.Timestamp;
 public class Addresses {
 
         @Id
-        @GeneratedValue(strategy =GenerationType.AUTO)
-        private Integer address_id;
+        @GeneratedValue(strategy =GenerationType.IDENTITY)
+        @Column(name = "address_id")
+        private Integer addressId;
 
-        private Integer profile_id;
+        @Column(name = "profile_id")
+        private Integer profileId;
 
         private String address1;
 
