@@ -1,19 +1,22 @@
 package com.CRM.CRMV1.model;
 
+
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="userroles")
-public class UserRoles {
+@Table(name="company")
+public class Company {
 
-     @Id
+    @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private Integer role_id;
+    private Integer id;
 
-    private String role_name;
+    private Integer companyid;
 
-    private String role_desc;
+    private Integer profileid;
+
 }
+

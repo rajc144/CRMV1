@@ -1,12 +1,9 @@
 package com.CRM.CRMV1.controller.company;
 
-import com.CRM.CRMV1.enums.UserTypes;
-import com.CRM.CRMV1.model.Addresses;
-import com.CRM.CRMV1.model.UserRoles;
-import com.CRM.CRMV1.repository.AddressesRepository;
+import com.CRM.CRMV1.model.Address;
+import com.CRM.CRMV1.repository.AddressRepository;
 import com.CRM.CRMV1.repository.UserInfoRepository;
 import com.CRM.CRMV1.model.Users;
-import com.CRM.CRMV1.repository.UserRolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +19,8 @@ public class UserInfoController {
     @Autowired
     private UserInfoRepository userInfoRepository;
 
-
     @Autowired
-    UserRolesRepository userRolesRepository;
-
-    @Autowired
-    AddressesRepository addressesRepository;
+    AddressRepository addressRepository;
 
     @RequestMapping(value="/foo")
     public String accountGet(@RequestParam("uname") String username)
@@ -55,9 +48,10 @@ public class UserInfoController {
      * @return
      */
     @GetMapping (path="/{username}")
-    public @ResponseBody Users getUserProfileByUserName(@PathVariable String username){
+    public @ResponseBody
+    java.util.Optional<Users> getUserProfileByUserName(@PathVariable String username){
 
-        Users u = userInfoRepository.findUsersByUsername(username);
+        java.util.Optional<Users> u = userInfoRepository.findUsersByUsername(username);
         return u;
     }
 
@@ -66,45 +60,38 @@ public class UserInfoController {
      * given user id returns their role from the userroles table.
      * @param userid
      * @return
-     */
-    @GetMapping (path="/role/{userid}")
-    public @ResponseBody
-    Optional<UserRoles> getUserRoleByUserId(@PathVariable Integer userid){
 
-        Optional<UserRoles> u = userRolesRepository.findById(userid);
-        return u;
+    @GetMapping (path="/role/{userid}")
+    public @ResponseBody Optional<UserRoles> getUserRoleByUserId(@PathVariable Integer userid){
+
+        return null;
+
+    }
+     */
+
+
+    /**
+     * add new address for a user. requires profile id.
+     *
+     * @param address
+     * @return
+     */
+    @RequestMapping(value="/add/address", method = RequestMethod.POST)
+    public Address addNewAddress(@RequestBody Address address)
+    {
+        return addressRepository.save(address);
     }
 
     /**
-     *adds new user type.
-     * must specify user type so we can update the look up tables
-     * @param user
+     * get list of all addresses for give profile id.
+     * @param /get/addresses/{profileid}
      * @return
      */
-    //todo: handle errors (e.g. if user exist)
-    @RequestMapping(value="/add/user", method = RequestMethod.POST)
-    public Users addNewUser(@RequestBody Users user)
+
+    @RequestMapping(value="/get/addresses/{profileid}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Address> addNewUser(@PathVariable Integer profileid)
     {
-        Users u = userInfoRepository.save(user);
-
-        if(user.getUsertype().equals(UserTypes.CONTRACTOR))
-        {
-            //update the contractor to profile id table for look up
-        }
-        else if(user.getUsertype().equals(UserTypes.CUSTOMER)) {
-
-        }
-        else if(user.getUsertype().equals(UserTypes.VENDOR)) {
-
-        }
-
-        return u;
-    }
-
-    @RequestMapping(value="/add/address", method = RequestMethod.POST)
-    public Addresses addNewUser(@RequestBody Addresses address)
-    {
-        return addressesRepository.save(address);
+        return addressRepository.findAddressByProfileid(profileid);
     }
 
 

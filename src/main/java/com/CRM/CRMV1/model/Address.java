@@ -7,16 +7,15 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
-@Table(name="addresses")
-public class Addresses {
+@Table(name="address")
+public class Address {
 
         @Id
         @GeneratedValue(strategy =GenerationType.IDENTITY)
-        @Column(name = "address_id")
-        private Integer addressId;
+        @Column(name = "addressid")
+        private Integer addressid;
 
-        @Column(name = "profile_id")
-        private Integer profileId;
+        private Integer profileid;
 
         private String address1;
 
@@ -30,9 +29,11 @@ public class Addresses {
 
         private String country;
 
-        private String primary_phone;
 
-        private String secondary_phone;
+        private String primaryphone;
+
+
+        private String secondaryphone;
 
         private String email;
 

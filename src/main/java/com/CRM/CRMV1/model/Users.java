@@ -2,14 +2,13 @@ package com.CRM.CRMV1.model;
 
 
 import lombok.Data;
+
 import java.sql.Timestamp;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Data
@@ -18,9 +17,10 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private Integer profile_id;
+    @Column(name = "profileid")
+    private Integer profileid;
 
-    private Integer role_id;
+    private String role;
 
     private String fname;
 
@@ -28,7 +28,7 @@ public class Users {
 
     private Integer enabled;
 
-    private Timestamp join_date;
+    private Timestamp joindate;
 
     private String username;
 
@@ -36,7 +36,24 @@ public class Users {
 
     private String usertype;
 
-    private String business_name;
+    private String businessname;
+
+    private Integer companyid;
+
+    private Integer customerid;
+
+    private Integer vendorid;
+
+    private String owner;
+
+    @CreationTimestamp
+    @Column(name = "created")
+    private Timestamp created;
+
+    @UpdateTimestamp
+    @Column(name = "modified")
+    private Timestamp modified;
+
 
 
 }

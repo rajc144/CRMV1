@@ -1,9 +1,28 @@
 package com.CRM.CRMV1.enums;
 
-public enum UserTypes {
+import java.io.Serializable;
 
-        CONTRACTOR ,
-        CUSTOMER ,
-        VENDOR
+public enum UserTypes implements Serializable {
+
+        CONTRACTOR("CONTRACTOR"),
+        CUSTOMER ("CUSTOMER"),
+        SUBCONTRACTOR ("SUBCONTRACTOR");
+
+    private String userType;
+
+    UserTypes(String uType)
+    {
+        this.userType = uType;
     }
+
+    @Override
+    public String toString() {
+        return userType;
+    }
+
+    public String getUserType()
+    {
+        return this.userType;
+    }
+}
 
