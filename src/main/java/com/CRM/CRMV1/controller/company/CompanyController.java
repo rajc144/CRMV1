@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -131,6 +132,14 @@ public class CompanyController {
     public Iterable<Address> getAllAddressesByProfileId (@PathVariable Integer profileid)
     {
         return addressRepository.findAllByProfileid(profileid);
+    }
+
+
+
+    @RequestMapping(value="/get/users/{companyid}", method = RequestMethod.GET)
+    public List<Object[]> getAllUserByCompanyId (@PathVariable Integer companyid)
+    {
+        return companyRepository.findAllCompanyUsersByCompanyid(companyid);
     }
 
 
