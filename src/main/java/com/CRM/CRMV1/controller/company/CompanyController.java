@@ -43,14 +43,13 @@ public class CompanyController {
      */
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public Company addNewCompany(@RequestBody Users newCompany)
+    public Company addNewUserToCompany(@RequestBody Users newCompany)
     {
         //set current time stamp for join date when adding a new user
         Calendar calendar = Calendar.getInstance();
         newCompany.setJoindate(new java.sql.Timestamp(calendar.getTime().getTime()));
 
         Integer rnd = new Random().nextInt(10000000);
-
 
         // now add that record to the users table
         newCompany.setCompanyid(rnd);
@@ -67,8 +66,6 @@ public class CompanyController {
         c = companyRepository.save(c);
 
         return c;
-
-
     }
 
     @RequestMapping(value="/login/{username}")
@@ -85,7 +82,7 @@ public class CompanyController {
      */
     //todo: handle errors (e.g. if user exist)
     @RequestMapping(value="/add/client", method = RequestMethod.POST)
-    public Users addNewUser(@RequestBody Users user)
+    public Users addNewClient(@RequestBody Users user)
     {
 
         if(user.getCompanyid().equals(null))
@@ -105,6 +102,7 @@ public class CompanyController {
 
         return u;
     }
+
 
 
     /**

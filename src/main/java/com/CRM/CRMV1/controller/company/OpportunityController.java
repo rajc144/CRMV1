@@ -8,10 +8,7 @@ import com.CRM.CRMV1.repository.UserInfoRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @EnableAutoConfiguration
@@ -35,5 +32,25 @@ public class OpportunityController {
         return opportunityRepository.save(opportunity);
     }
 
+    @RequestMapping(value="/get/all/company/{companyid}", method = RequestMethod.GET)
+    public Iterable<Opportunity> getALlOppsByCompanyId(@PathVariable Integer companyid)
+    {
+
+        return opportunityRepository.findAllByCompanyid(companyid);
+    }
+
+    @RequestMapping(value="/get/all/customer/{customerid}", method = RequestMethod.GET)
+    public Iterable<Opportunity> getALlOppsByClientId(@PathVariable Integer customerid)
+    {
+
+        return opportunityRepository.findAllByCustomerid(customerid);
+    }
+
+    @RequestMapping(value="/get/all/sales/{salespersonid}", method = RequestMethod.GET)
+    public Iterable<Opportunity> getALlOppsBySalesPersonId(@PathVariable Integer salespersonid)
+    {
+
+        return opportunityRepository.findAllBySalespersonid(salespersonid);
+    }
 
 }
