@@ -37,7 +37,7 @@ public class UserServiceImpl implements CrudOperation<Users> {
 	@Override
 	public Users edit(Long id) {
 
-		return userRepository.findByprofileid(id);
+		return userRepository.findByid(id);
 	}
 
 	@Override

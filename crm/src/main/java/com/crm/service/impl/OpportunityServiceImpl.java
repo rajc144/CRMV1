@@ -37,13 +37,13 @@ public class OpportunityServiceImpl implements CrudOperation<Opportunity> {
 
 	@Override
 	public Opportunity edit(Long id) {
-		
-		return opportunityRepository.findByopportunityid(id);
+
+		return opportunityRepository.findByid(id);
 	}
 
 	@Override
 	public List<Opportunity> getAll() {
-		
+
 		return opportunityRepository.findAll();
 	}
 

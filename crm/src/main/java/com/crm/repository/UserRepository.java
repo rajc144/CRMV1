@@ -10,11 +10,9 @@ import com.crm.entity.Users;
 
 public interface UserRepository extends JpaRepository<Users, Long> {
 
-	public Users findByprofileid(Long profileid);
+	public Users findByid(Long profileid);
 
 	public List<Users> findByusername(String username);
-
-	public List<Users> findBycompanyid(Long companyid);
 
 	@Query("FROM Users WHERE username=:userName")
 	public Users authenticate(@Param("userName") String userName);

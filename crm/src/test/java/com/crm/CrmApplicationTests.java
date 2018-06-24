@@ -1,4 +1,4 @@
-package com.hbs.crm;
+package com.crm;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

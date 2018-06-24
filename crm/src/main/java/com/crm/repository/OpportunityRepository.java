@@ -6,6 +6,6 @@ import com.crm.entity.Opportunity;
 
 public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
 
-	public Opportunity findByopportunityid(Long opportunityid);
+	public Opportunity findByid(Long opportunityid);
 
 }
